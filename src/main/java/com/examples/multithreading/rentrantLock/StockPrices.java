@@ -57,7 +57,7 @@ public class StockPrices extends Application {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (pricesContainer.getLockObject().tryLock()) {
+                if (pricesContainer.getLockObject().tryLock()) { // try lock is better than lock for performance as it is lock free
                     try {
                         Label bitcoinLabel = labels.get("BTC");
                         bitcoinLabel.setText(String.valueOf(pricesContainer.getBitCoinPrice()));
